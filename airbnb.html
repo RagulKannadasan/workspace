@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airbnb</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      .clickable {
+        cursor: pointer;
+      }
+      .search-panel {
+        max-width: 850px;
+        border-color: #dddddd;
+      }
+      .search-option {
+        cursor: pointer;
+      }
+      .search-option-fixed {
+        width: 200px;
+      }
+      .search-divider {
+        width: 1px;
+        height: 32px;
+        background-color: #dddddd;
+      }
+      .search-action {
+        width: 48px;
+        height: 48px;
+        background-color: #ff385c;
+        border: 0;
+        flex-shrink: 0;
+      }
+      .home-card {
+        width: 17rem;
+        cursor: pointer;
+      }
+      .home-card-image {
+        aspect-ratio: 20 / 19;
+      }
+      .home-card-badge {
+        font-size: 11px;
+      }
+      .home-card-title {
+        font-size: 15px;
+      }
+      .home-card-meta {
+        font-size: 13.5px;
+      }
+      .rating-icon {
+        display: inline-block;
+        height: 9px;
+        width: 9px;
+        fill: #222222;
+        margin-bottom: 2px;
+      }
+      .wishlist-btn {
+        z-index: 2;
+      }
+      .footer-text {
+        font-size: 0.875rem;
+      }
+      .search-container {
+        max-width: 1760px;
+      }
+      .page-hero-title {
+        font-size: 1.35rem;
+      }
+      .hero-arrow {
+        display: block;
+        fill: none;
+        height: 12px;
+        width: 12px;
+        stroke: currentcolor;
+        stroke-width: 4;
+        overflow: visible;
+      }
+      .search-label {
+        font-size: 0.85rem;
+      }
+      .search-label-fixed {
+        width: 200px;
+      }
+      .search-meta {
+        font-size: 0.9rem;
+      }
+      .wishlist-icon {
+        display: block;
+        fill: rgba(0, 0, 0, 0.5);
+        height: 24px;
+        width: 24px;
+        stroke: #ffffff;
+        stroke-width: 2;
+        overflow: visible;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <!-- Header -->
+      <header>
+        <nav class="d-flex justify-content-between align-items-center p-3">
+          <div class="my-auto">
+            <img src="./airbnb-ar21.svg" alt="airbnb-logo" height="32" />
+          </div>
+          <div class="d-flex gap-4">
+            <div class="d-flex align-items-center gap-2 clickable">
+              <img
+                width="36"
+                height="36"
+                src="https://a0.muscache.com/im/pictures/AirbnbPlatformAssets/AirbnbPlatformAssets-search-bar-icons/original/a811de29-114f-43a0-b8c5-698d4564bd04.png?im_w=240"
+                alt="All"
+                loading="eager"
+              />
+              <p class="my-auto fw-semibold small">All</p>
+            </div>
+            <div class="d-flex align-items-center gap-2 clickable">
+              <img
+                width="36"
+                height="36"
+                src="https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-search-bar-icons/original/4aae4ed7-5939-4e76-b100-e69440ebeae4.png?im_w=240"
+                alt="Homes"
+                loading="lazy"
+              />
+              <p class="my-auto text-secondary small">Homes</p>
+            </div>
+            <div class="d-flex align-items-center gap-2 clickable">
+              <img
+                width="36"
+                height="36"
+                src="https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-search-bar-icons/original/1e24b1c9-b070-48d9-8a70-91aae3151830.png?im_w=240"
+                alt="Experiences"
+                loading="lazy"
+              />
+              <p class="my-auto text-secondary small">Experiences</p>
+            </div>
+            <div class="d-flex align-items-center gap-2 clickable">
+              <img
+                width="36"
+                height="36"
+                src="https://a0.muscache.com/im/pictures/airbnb-platform-assets/AirbnbPlatformAssets-search-bar-icons/original/2bf5d36d-e731-4465-a8ef-91abbf2ae8ce.png?im_w=240"
+                alt="Services"
+                loading="lazy"
+              />
+              <p class="my-auto text-secondary small">Services</p>
+            </div>
+          </div>
+          <div class="d-flex gap-3 align-items-center">
+            <p class="my-auto fw-semibold small clickable">Become a host</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="currentColor"
+              class="bi bi-globe clickable"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"
+              />
+            </svg>
+            <div
+              class="d-flex align-items-center gap-2 border rounded-pill px-3 py-1 clickable"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-list"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="#717171"
+                class="bi bi-person-circle"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path
+                  fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                />
+              </svg>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="d-flex justify-content-center my-3">
+          <div
+            class="d-flex align-items-center bg-white border rounded-pill px-4 py-2 shadow-sm search-panel"
+          >
+            <div class="px-3 search-option search-option-fixed">
+              <div class="fw-semibold text-dark search-label">Where</div>
+              <div class="text-secondary search-meta">Search destinations</div>
+            </div>
+            <div class="search-divider"></div>
+            <div class="flex-grow-1 px-4 clickable">
+              <div
+                class="fw-semibold text-dark search-label search-label-fixed"
+              >
+                When
+              </div>
+              <div class="text-secondary search-meta">Add dates</div>
+            </div>
+            <div class="search-divider"></div>
+            <div
+              class="flex-grow-1 px-4 d-flex justify-content-between align-items-center clickable"
+            >
+              <div>
+                <div
+                  class="fw-semibold text-dark search-label search-label-fixed"
+                >
+                  Who
+                </div>
+                <div class="text-secondary search-meta">Add guests</div>
+              </div>
+              <button
+                class="btn rounded-circle d-flex align-items-center justify-content-center p-0 ms-3 search-action"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="white"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Section (Popular homes in Bengaluru) -->
+      <main class="container-fluid px-4 px-lg-5 my-4 search-container">
+        <div class="d-flex align-items-center mb-3">
+          <a
+            href="#"
+            class="d-flex align-items-center gap-2 text-dark text-decoration-none clickable"
+          >
+            <h4 class="fw-bold m-0 page-hero-title">
+              Popular homes in Bengaluru
+            </h4>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              class="hero-arrow"
+            >
+              <g fill="none">
+                <path d="M28 16H2M17 4l11.3 11.3a1 1 0 0 1 0 1.4L17 28"></path>
+              </g>
+            </svg>
+          </a>
+        </div>
+
+        <div class="d-flex flex-wrap gap-4 pb-3">
+          <!-- Card 1 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-1626915807352584164/original/391ac4de-fbed-418d-a064-d47efb022384.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Home in Bengaluru"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Home in Bengaluru
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹21,540</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.97</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-1726184103728503042/original/03cfa43c-e1f1-4f02-9f64-bba90c5445bc.png?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Flat in Mulluru"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Flat in Mulluru
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹8,036</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">5.0</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-1556456330037060826/original/87ce9d31-3253-45a7-8953-5feca6b590e8.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Flat in Bengaluru"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Flat in Bengaluru
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹14,200</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.95</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-1626915807352584164/original/391ac4de-fbed-418d-a064-d47efb022384.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Villa in Nandi Hills"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Villa in Nandi Hills
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹18,900</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.98</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/miso/Hosting-53274533/original/6069e25d-bb85-48b7-b08e-1da5940e4f2e.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Cottage in Sakleshpur"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Cottage in Sakleshpur
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹9,450</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.91</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/miso/Hosting-694503890861148819/original/d0a0a57e-399f-4318-ae7f-056a003f48a9.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Home in Chikmagalur"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Home in Chikmagalur
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹11,800</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.89</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-1626915807352584164/original/391ac4de-fbed-418d-a064-d47efb022384.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Luxury Villa in Tenkasi"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Luxury Villa in Tenkasi
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹15,600</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.96</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-1726184103728503042/original/03cfa43c-e1f1-4f02-9f64-bba90c5445bc.png?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Farm stay in Courtallam"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Farm stay in Courtallam
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹7,200</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.93</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-1556456330037060826/original/87ce9d31-3253-45a7-8953-5feca6b590e8.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Estate Stay in Tenkasi"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Estate Stay in Tenkasi
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹13,500</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.99</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 10 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-1626915807352584164/original/391ac4de-fbed-418d-a064-d47efb022384.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Nature Retreat in Western Ghats"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Nature Retreat in Western Ghats
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹16,400</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.92</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 11 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/miso/Hosting-53274533/original/6069e25d-bb85-48b7-b08e-1da5940e4f2e.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Heritage Home in Tenkasi"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Heritage Home in Tenkasi
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹8,900</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.88</span>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 12 -->
+          <div
+            class="d-flex flex-column position-relative text-decoration-none text-dark home-card"
+          >
+            <div
+              class="position-relative rounded-4 overflow-hidden bg-light home-card-image"
+            >
+              <span
+                class="position-absolute top-0 start-0 m-2 badge bg-white text-dark rounded-pill shadow-sm fw-bold px-2 py-1 home-card-badge"
+                >Guest favourite</span
+              >
+              <button
+                class="position-absolute top-0 end-0 m-2 btn btn-link p-0 text-decoration-none border-0 shadow-none wishlist-btn"
+                aria-label="Add to wishlist"
+                type="button"
+              >
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  class="wishlist-icon"
+                >
+                  <path
+                    d="m15.9998 28.6668c7.1667-4.8847 14.3334-10.8844 14.3334-18.1088 0-1.84951-.6993-3.69794-2.0988-5.10877-1.3996-1.4098-3.2332-2.11573-5.0679-2.11573-1.8336 0-3.6683.70593-5.0668 2.11573l-2.0999 2.11677-2.0988-2.11677c-1.3995-1.4098-3.2332-2.11573-5.06783-2.11573-1.83364 0-3.66831.70593-5.06683 2.11573-1.39955 1.41083-2.09984 3.25926-2.09984 5.10877 0 7.2244 7.16667 13.2241 14.3333 18.1088z"
+                  ></path>
+                </svg>
+              </button>
+              <img
+                src="https://a0.muscache.com/im/pictures/miso/Hosting-694503890861148819/original/d0a0a57e-399f-4318-ae7f-056a003f48a9.jpeg?im_w=720"
+                class="w-100 h-100 object-fit-cover"
+                alt="Private Pool Villa"
+                loading="lazy"
+              />
+            </div>
+            <div class="pt-2">
+              <h6 class="fw-bold mb-1 text-truncate text-dark home-card-title">
+                Private Pool Villa
+              </h6>
+              <p
+                class="text-secondary small mb-0 d-flex align-items-center gap-1 flex-wrap home-card-meta"
+              >
+                <span class="fw-bold text-dark">₹22,000</span>
+                <span>for 2 nights</span>
+                <span>·</span>
+                <span class="d-inline-flex align-items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    class="rating-icon"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
+                    ></path>
+                  </svg>
+                  <span class="fw-semibold text-dark">4.95</span>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="bg-light border-top py-3 mt-5">
+        <div
+          class="px-4 d-flex justify-content-between align-items-center flex-wrap footer-text"
+        >
+          <div class="d-flex align-items-center gap-2 text-dark">
+            <span>© 2026 Airbnb, Inc.</span>
+            <span>·</span>
+            <a href="#" class="text-decoration-none text-dark">Privacy</a>
+            <span>·</span>
+            <a href="#" class="text-decoration-none text-dark">Terms</a>
+            <span>·</span>
+            <a href="#" class="text-decoration-none text-dark"
+              >Company details</a
+            >
+          </div>
+          <div class="d-flex align-items-center gap-4 fw-semibold text-dark">
+            <div class="d-flex align-items-center gap-2 clickable">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-globe"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"
+                />
+              </svg>
+              <span>English (IN)</span>
+            </div>
+            <div class="d-flex align-items-center gap-1 clickable">
+              <span>₹</span>
+              <span>INR</span>
+            </div>
+            <div class="d-flex align-items-center gap-3 ms-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                class="bi bi-facebook clickable"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-twitter-x clickable"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                class="bi bi-instagram clickable"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.036 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
