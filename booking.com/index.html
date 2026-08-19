@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking.com | Official Site</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="bg-booking-blue text-white pb-0">
+        <div class="container pt-3">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <a href="#" class="text-white text-decoration-none fw-bold fs-3">Booking.com</a>
+                <div class="d-flex align-items-center gap-3 fs-6">
+                    <span class="fw-bold">INR</span>
+                    <img src="https://flagcdn.com/w20/in.png" alt="India Flag" class="rounded-circle" width="20"
+                        height="20">
+                    <i class="bi bi-question-circle fs-5"></i>
+                    <a href="#" class="text-white text-decoration-none d-none d-md-inline">List your property</a>
+                    <button class="btn btn-white rounded-0 px-3 text-decoration-none text-dark h-btn">Register</button>
+                    <button class="btn btn-white rounded-0 px-3 text-decoration-none text-dark h-btn">Sign in</button>
+
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                <a href="#" class="nav-tab-btn active"><i class="bi bi-door-open"> </i>Stays </a>
+                <a href="#" class="nav-tab-btn"><i class="bi bi-airplane"></i> Flights</a>
+                <a href="#" class="nav-tab-btn"><i class="bi bi-globe"></i> Flight + Hotel</a>
+                <a href="#" class="nav-tab-btn"><i class="bi bi-car-front"></i> Car rental</a>
+                <a href="#" class="nav-tab-btn"><i class="bi bi-stars"></i> Attractions</a>
+                <a href="#" class="nav-tab-btn"><i class="bi bi-taxi-front"></i> Airport taxis</a>
+            </div>
+            <div class="py-2 mb-4">
+                <h1 class="fw-bold display-5 mb-2">Find your next stay</h1>
+                <p class="fs-4 text-light mb-0">Search deals on hotels, homes, and much more...</p>
+            </div>
+
+
+            <div class="search-widget p-1">
+                <div class="row g-1 align-items-stretch">
+
+                    <div class="col-lg-4 col-md-12">
+                        <div class="search-field d-flex align-items-center gap-2 rounded-start">
+                            <i class="bi bi-bed fs-4 text-secondary"></i>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <span class="text-secondary" style="font-size: 0.75rem;">Enter destination</span>
+                                <input type="text" class="search-input text-dark fw-medium"
+                                    placeholder="Where are you going?" style="font-size: 0.95rem;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="search-field d-flex align-items-center gap-2">
+                            <i class="bi bi-calendar3 fs-4 text-secondary"></i>
+                            <div class="d-flex flex-column">
+                                <span class="text-secondary" style="font-size: 0.75rem;">Select dates</span>
+                                <span class="fw-bold text-dark" style="font-size: 0.88rem;">Check-in date — Check-out
+                                    date</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="search-field d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="bi bi-person fs-4 text-secondary"></i>
+                                <div class="d-flex flex-column">
+                                    <span class="text-secondary" style="font-size: 0.75rem;">Select occupancy</span>
+                                    <span class="fw-bold text-dark" style="font-size: 0.88rem;">2 adults · 0 children ·
+                                        1 room</span>
+                                </div>
+                            </div>
+                            <i class="bi bi-chevron-down text-secondary ms-1" style="font-size: 0.8rem;"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-12">
+                        <button class="btn btn-primary w-100 h-100 fw-bold fs-5 py-2 rounded-end"
+                            style="background-color: #006ce4; border: none;">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="container mb-5" style="margin-top: 55px;">
+        <div class="mb-5 text-dark d-flex gap-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="workTravel" style="border-color: #868686;">
+                <label class="form-check-label text-dark fw-medium" for="workTravel" style="font-size: 0.9rem;">I'm
+                    traveling for work</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="addFlights" style="border-color: #868686;">
+                <label class="form-check-label text-dark fw-medium" for="addFlights" style="font-size: 0.9rem;">Add
+                    flights to my search</label>
+            </div>
+        </div>
+
+        <section class="mb-5">
+            <h3 class="fw-bold mb-1">Offers</h3>
+            <p class="text-secondary mb-3">Promotions, deals, and special offers for you</p>
+
+            <div class="offer-card p-4">
+                <div class="row align-items-center">
+                    <div class="col-md-8 col-12 mb-3 mb-md-0">
+                        <span class="text-secondary small fw-semibold">Escape for less with Getaway Deals</span>
+                        <h4 class="fw-bold my-2">No catch. Just getaways.</h4>
+                        <p class="text-secondary small mb-3">At least 15% off select stays worldwide – just book and go.
+                        </p>
+                        <button class="btn btn-primary fw-bold btn-sm py-2 px-3"
+                            style="background-color: #006ce4; border: none;">Save with a Getaway Deal</button>
+                    </div>
+                    <div class="col-md-4 col-12 text-md-end">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                            alt="Getaway Deal Beach" class="img-fluid rounded"
+                            style="max-height: 160px; width: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h3 class="fw-bold mb-3">Browse by property type</h3>
+
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <div class="card property-card h-100">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"
+                            class="property-card-img" alt="Hotels">
+                        <div class="card-body p-2">
+                            <h6 class="fw-bold mb-0">Hotels</h6>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-md-3">
+                    <div class="card property-card h-100">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
+                            class="property-card-img" alt="Apartments">
+                        <div class="card-body p-2">
+                            <h6 class="fw-bold mb-0">Apartments</h6>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-6 col-md-3">
+                    <div class="card property-card h-100">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80"
+                            class="property-card-img" alt="Resorts">
+                        <div class="card-body p-2">
+                            <h6 class="fw-bold mb-0">Resorts</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="card property-card h-100">
+                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=600&q=80"
+                            class="property-card-img" alt="Villas">
+                        <div class="card-body p-2">
+                            <h6 class="fw-bold mb-0">Villas</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-5">
+            <h3 class="fw-bold mb-1">Trending destinations</h3>
+            <p class="text-secondary mb-4">Most popular choices for travelers from India</p>
+            <div class="row g-3 mb-3">
+                <div class="col-12 col-md-6">
+                    <div class="destination-card destination-card-lg">
+                        <div class="destination-card-overlay">
+                            <div class="destination-title">
+                                New Delhi <img src="https://flagcdn.com/w20/in.png" alt="India Flag"
+                                    class="flag-icon rounded-1">
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=80"
+                            alt="New Delhi" class="destination-bg-img">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="destination-card destination-card-lg">
+                        <div class="destination-card-overlay">
+                            <div class="destination-title">
+                                Bangalore <img src="https://flagcdn.com/w20/in.png" alt="India Flag"
+                                    class="flag-icon rounded-1">
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80"
+                            alt="Bangalore" class="destination-bg-img">
+                    </div>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-12 col-md-4">
+                    <div class="destination-card destination-card-sm">
+                        <div class="destination-card-overlay">
+                            <div class="destination-title">
+                                Mumbai <img src="https://flagcdn.com/w20/in.png" alt="India Flag"
+                                    class="flag-icon rounded-1">
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80"
+                            alt="Mumbai" class="destination-bg-img">
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="destination-card destination-card-sm">
+                        <div class="destination-card-overlay">
+                            <div class="destination-title">
+                                Chennai <img src="https://flagcdn.com/w20/in.png" alt="India Flag"
+                                    class="flag-icon rounded-1">
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80"
+                            alt="Chennai" class="destination-bg-img">
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="destination-card destination-card-sm">
+                        <div class="destination-card-overlay">
+                            <div class="destination-title">
+                                Hyderabad <img src="https://flagcdn.com/w20/in.png" alt="India Flag"
+                                    class="flag-icon rounded-1">
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80"
+                            alt="Hyderabad" class="destination-bg-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-6 col-md-2">
+                    <h6>Support</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Manage your trips</a></li>
+                        <li><a href="#">Contact Customer Service</a></li>
+                        <li><a href="#">Safety Resource Center</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <h6>Discover</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Genius loyalty program</a></li>
+                        <li><a href="#">Seasonal and holiday deals</a></li>
+                        <li><a href="#">Travel articles</a></li>
+                        <li><a href="#">Booking.com for Business</a></li>
+                        <li><a href="#">Traveller Review Awards</a></li>
+                        <li><a href="#">Car rental</a></li>
+                        <li><a href="#">Flight finder</a></li>
+                        <li><a href="#">Restaurant reservations</a></li>
+                        <li><a href="#">Booking.com for Travel Agents</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2">
+                    <h6>Terms and settings</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Notice</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Accessibility Statement</a></li>
+                        <li><a href="#">Grievance officer</a></li>
+                        <li><a href="#">Modern Slavery Statement</a></li>
+                        <li><a href="#">Human Rights Statement</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2">
+                    <h6>Partners</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Extranet login</a></li>
+                        <li><a href="#">Partner help</a></li>
+                        <li><a href="#">List your property</a></li>
+                        <li><a href="#">Become an affiliate</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <h6>About</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About Booking.com</a></li>
+                        <li><a href="#">How We Work</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Press center</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investor relations</a></li>
+                        <li><a href="#">Corporate contact</a></li>
+                        <li><a href="#">Content guidelines and reporting</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="py-3 d-flex align-items-center gap-2">
+                <img src="https://flagcdn.com/w20/in.png" alt="India Flag" width="22" height="15" class="rounded-1">
+                <span class="fw-bold text-dark fs-6">INR</span>
+            </div>
+
+            <hr class="my-3 text-secondary opacity-25">
+
+            <div class="text-center pt-2">
+                <p class="text-secondary small mb-1" style="font-size: 0.75rem;">
+                    Booking.com is part of Booking Holdings Inc., the world leader in online travel and related
+                    services.
+                </p>
+                <p class="text-secondary small mb-3" style="font-size: 0.75rem;">
+                    Copyright © 1996–2026 Booking.com™. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
